@@ -15,4 +15,4 @@ while True:
     print("-------------------------")
     print("{0}     {1} ({2}%)       ".format(ticker.upper(), res["c"], res["dp"]))
     print("-------------------------")
-    sleep(2.5)
+    sleep(3)
