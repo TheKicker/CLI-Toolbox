@@ -14,11 +14,19 @@ def download_Video(yt):
   input_itag = input("Select and enter itag value : ")
   # get video using itag vale
   video = yt.streams.get_by_itag(input_itag)
-  
-  title=yt.title
-  fn = title.replace(" ", "-")
 
-  os.chdir("Desktop/")
+  # Ask the user if they want to rename the title
+  input_title = input("Would you like to rename the video, if no then title on Youtube will be used.  y/n ")
+
+  if(input_title.lower() == "y"):
+    # Rename using their input
+    fn = input("New title (please no spaces): ")
+  else:
+    # Rename using the title on youtube, but-converting-to-dashes instead of spaces
+    title=yt.title
+    fn = title.replace(" ", "-")
+
+  os.chdir(os.path.expanduser("~/Desktop"))
 
   # finally download the YouTube Video...
   video.download(filename=fn+".mp4")

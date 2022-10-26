@@ -49,3 +49,15 @@ https://pypi.org/project/pytube/
 pip install pytube
 
 ```
+
+<hr>
+
+<br>
+
+tqdm
+```
+https://pypi.org/project/tqdm/
+
+pip install tqdm
+
+```
