@@ -2,7 +2,6 @@ rate = input("\n What are you paid per hour? ")
 rate = float(rate)
 decimal_places = 3
 
-
 def calculate(rate):
     sixty = round(rate * 1, decimal_places)
     fourtyfive = round(rate * 0.75, decimal_places)

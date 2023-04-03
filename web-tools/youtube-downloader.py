@@ -20,15 +20,16 @@ def download_Video(yt):
 
   if(input_title.lower() == "y"):
     # Rename using their input
-    fn = input("New title (please no spaces): ")
+    fn = input("New title (spaces will be replaced with dashes): ")
   else:
     # Rename using the title on youtube, but-converting-to-dashes instead of spaces
     title=yt.title
-    fn = title.replace(" ", "-")
+    fn = title[0:25]
 
   os.chdir(os.path.expanduser("~/Desktop"))
 
   # finally download the YouTube Video...
+  fn = title.replace(" ", "-")
   video.download(filename=fn+".mp4")
 
   print("Video is downloading as " + fn + ".mp4")
