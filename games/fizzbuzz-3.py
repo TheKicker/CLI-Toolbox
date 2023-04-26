@@ -7,7 +7,7 @@ initial = 1
 words = ""
 
 with open("file.txt", 'w') as f:
-    f.write("FizzBuzz 3.0 by Cav Lemasters (Fizz {0}/ Buzz {1} / Limit {2})".format(fizz, buzz, limit))
+    f.write("FizzBuzz 3.0 by Cav Lemasters (Fizz {0} / Buzz {1} / Limit {2})".format(fizz, buzz, limit))
     while initial <= int(limit):
         if (initial % int(fizz) == 0):
             if (initial % int(buzz) == 0):
