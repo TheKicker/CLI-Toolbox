@@ -8,10 +8,15 @@ txt_file_path = os.path.join(script_directory, 'wallet.txt')
 
 # Define the symbols and their probabilities
 symbols = ["🍒", "🍋", "🍊", "🍔", "🍕", "🌮"]
-probabilities = [0.3, 0.2, 0.15, 0.1, 0.1, 0.15]
+# Initial probabilities
+normal_probabilities = [0.3, 0.2, 0.15, 0.1, 0.1, 0.15]
+boosted_probabilities = [0.2, 0.2, 0.2, 0.1, 0.1, 0.2]
 
-def spin_reel():
-    return random.choices(symbols, probabilities)[0]
+def spin_reel(boosted_odds):
+    if boosted_odds:
+        return random.choices(symbols, boosted_probabilities)[0]
+    else:
+        return random.choices(symbols, normal_probabilities)[0]
 
 def display_slot(slot):
     print(" | ".join(slot))
@@ -36,16 +41,23 @@ def main():
     print("\tLifetime Winnings:", wallet, " coins")
     print("")
     
-    balance = 100
+    balance = 150
+    boosted_odds = False
+
     while balance > 0:
         input("Press Enter to spin the slot machine...")
+
+        if balance < 60:
+            boosted_odds = True
+        elif balance > 120:
+            boosted_odds = False
         
         # Deduct the bet amount
         bet = 10
         balance -= bet
         
         # Spin the reels
-        reels = [spin_reel(), spin_reel(), spin_reel()]
+        reels = [spin_reel(boosted_odds), spin_reel(boosted_odds), spin_reel(boosted_odds)]
         display_slot(reels)
         
         # Check for winning combinations
@@ -55,7 +67,7 @@ def main():
             print(f"Congratulations! You won {winnings} coins!")
             # Write balance to the wallet.txt file
             with open(txt_file_path, "a") as file:
-                file.write(f"{str(winnings)}")
+                file.write(f"\n{str(winnings)}")
                 file.close()
         else:
             print("Sorry, no winning combination this time.")
