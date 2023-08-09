@@ -8,7 +8,10 @@ original = input("What is the binary? ")
 
 # Initializing a binary string in the form of
 # 0 and 1, with base of 2
-binary_int = int(original, 2);
+try: 
+    binary_int = int(original, 2);
+except ValueError as e:
+    print(f"\nYou tried to enter letters or something didn't you? \n Please enter binary only. \n\\ {e}")
   
 # Getting the byte number
 byte_number = binary_int.bit_length() + 7 // 8

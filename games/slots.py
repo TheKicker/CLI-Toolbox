@@ -36,9 +36,9 @@ def main():
     print(
         "Game Rules:\n\
         Get three symbols in a row to win!\n\
-        Everyone begins with a wallet of 100 coins."
+        Everyone begins with a wallet of 150 coins."
     )
-    print("\tLifetime Winnings:", wallet, " coins")
+    print("\tCareer Winnings:", wallet, " coins")
     print("")
     
     balance = 150
